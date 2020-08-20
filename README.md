@@ -213,14 +213,6 @@ Though this is not currently a requirement, it is a strong suggestion.
 **Your simulation will receive a 3 when it satisfies all of the above
 requirements AND implements one of the above stretch goals.**
 
-## Track-Specific Help
-
-Channels for help that's about your specific technologies, if the TLs
-and/or instructor doesn't have enough knowledge in that area.
-
-- DS: Your cohort channel
-- iOS: #ios_help
-- Web: Your cohort channel
 
 ## Additional Resources
 
