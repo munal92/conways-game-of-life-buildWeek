@@ -8,6 +8,7 @@ const Home = (props) => {
         gridSize={props.gridSize}
         colorPicker={props.colorPicker}
         animSpeed={props.animSpeed}
+        preset={props.preset}
       />
     </div>
   );

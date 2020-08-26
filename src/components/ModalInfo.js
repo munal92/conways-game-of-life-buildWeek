@@ -8,7 +8,7 @@ const ModalInfo = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="secondary" onClick={handleShow}>
         Rules
       </Button>
 

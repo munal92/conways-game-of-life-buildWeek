@@ -10,7 +10,7 @@ function App() {
     numberOfRow: 25,
     numberOfCol: 25,
   });
-  console.log(gridSize);
+  const [preset, setPreset] = useState("Presets");
   return (
     <>
       <Container fluid>
@@ -20,6 +20,8 @@ function App() {
               setColorPicker={setColorPicker}
               setAnimSpeed={setAnimSpeed}
               setGridSize={setGridSize}
+              setPreset={setPreset}
+              preset={preset}
             />
           </Col>
           <Col lg={9} className="colcont mt-5">
@@ -27,6 +29,7 @@ function App() {
               gridSize={gridSize}
               colorPicker={colorPicker}
               animSpeed={animSpeed}
+              preset={preset}
             />
           </Col>
         </Row>

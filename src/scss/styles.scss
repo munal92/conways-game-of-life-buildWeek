@@ -22,8 +22,8 @@ body {
   display: flex;
   justify-content: center;
   background-color: $dark-blue-color;
-  height: 100vh;
-  z-index: 2;
+  min-height: 100vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .contGen {
   display: flex;

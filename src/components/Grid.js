@@ -12,15 +12,56 @@ const Grid = (props) => {
       .fill(0)
       .map((row) => new Array(numberOfCol).fill(0));
   };
+
+  const presetGrid = () => {
+    if (props.preset !== "Presets" && props.preset !== "Custom") {
+      let midPoint = Math.floor(numberOfRow / 2);
+      let presetGrid = resetGrid();
+      if (props.preset === "Glider") {
+        let arrayGlider = [
+          [midPoint, midPoint],
+          [midPoint + 1, midPoint],
+          [midPoint, midPoint + 1],
+          [midPoint - 1, midPoint + 1],
+          [midPoint - 1, midPoint - 1],
+        ];
+
+        arrayGlider.forEach(([row, col]) => {
+          presetGrid[row][col] = 1;
+        });
+
+        setGrid(presetGrid);
+      } else if (props.preset === "Plus") {
+        let arrayPlus = [
+          [midPoint, midPoint],
+          [midPoint + 1, midPoint],
+          [midPoint - 1, midPoint],
+          [midPoint, midPoint + 1],
+          [midPoint, midPoint - 1],
+        ];
+
+        arrayPlus.forEach(([row, col]) => {
+          presetGrid[row][col] = 1;
+        });
+
+        setGrid(presetGrid);
+      }
+    } else {
+      setGrid(resetGrid());
+    }
+  };
   const [grid, setGrid] = useState(resetGrid());
   const [simRun, setSimRun] = useState(false);
 
   const [simGeneration, setSimGeneration] = useState(0);
   const [boxSize, setBoxSize] = useState({
-    grid: { width: "75vh", height: "75vh" },
+    grid: {
+      width: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
+      height: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
+    },
     box: {
-      width: "3vh",
-      height: "3vh",
+      width: numberOfCol > 26 ? "2vh" : "3vh",
+      height: numberOfCol > 26 ? "2vh" : "3vh",
     },
   });
 
@@ -102,7 +143,7 @@ const Grid = (props) => {
   // row+1 col-1  |  row+1 col        |   row+1 col+1
 
   return (
-    <div>
+    <>
       <div
         style={{ width: boxSize.grid.width, height: boxSize.grid.height }}
         className="gridContainer"
@@ -162,11 +203,12 @@ const Grid = (props) => {
                 setSimGeneration(0);
                 calculateBoxSize();
                 setSimRun(false);
-                setGrid(resetGrid());
+                presetGrid();
+                //setGrid(resetGrid());
               }}
               variant="warning"
             >
-              Reset
+              Reset/Create
             </Button>
           </Col>
           <Col className="contGen pl-5" lg={6}>
@@ -174,7 +216,7 @@ const Grid = (props) => {
           </Col>
         </Row>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -6,11 +6,18 @@ import { CirclePicker } from "react-color";
 import { Button } from "react-bootstrap";
 import Slider from "react-input-slider";
 
+import Dropdown from "react-bootstrap/Dropdown";
+
 const NaviBar = (props) => {
   const handleColorChange = ({ hex }) => props.setColorPicker(hex);
   const [colorPop, setColorPop] = useState(false);
   const [sliderBar, setSliderBar] = useState({ x: 1000 });
   const [sliderBarForGrid, setsliderBarForGrid] = useState({ y: 25 });
+
+  function handleDropdownMenu(e) {
+    let selectedOption = e.split("/");
+    props.setPreset(selectedOption[1]);
+  }
 
   return (
     <Container>
@@ -58,6 +65,7 @@ const NaviBar = (props) => {
             }}
           />
         </div>
+
         <div>
           <Button
             onClick={() => (colorPop ? setColorPop(false) : setColorPop(true))}
@@ -69,6 +77,19 @@ const NaviBar = (props) => {
               "Pick a color"
             )}
           </Button>
+        </div>
+        <div>
+          <Dropdown onSelect={handleDropdownMenu}>
+            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+              {props.preset}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/Custom">Custom</Dropdown.Item>
+              <Dropdown.Item href="#/Glider">Glider</Dropdown.Item>
+              <Dropdown.Item href="#/Plus">Plus</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
         <div>
           <ModalInfo />
