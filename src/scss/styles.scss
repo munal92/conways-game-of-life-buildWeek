@@ -1,0 +1,47 @@
+@import "./config";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.colcont {
+  display: flex;
+  justify-content: center;
+  background-color: $white-color;
+}
+.menucont {
+  display: flex;
+  justify-content: center;
+  background-color: $dark-blue-color;
+  min-height: 100vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contGen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  font-weight: bolder;
+  font-size: larger;
+}
+.spinnBtn {
+  min-width: 7vh !important;
+}
+.box {
+  border: 0.1px solid black;
+}
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@import "./navibar";

@@ -12,6 +12,13 @@ Conways's "Game of Life" and will guide them through the process of
 creating an app utilizing tools and frameworks that have been taught
 over the course of their specific track.
 
+Rules
+
+- If the cell is alive **and** has 2 or 3 neighbors, then it remains
+  alive. Else it dies.
+- If the cell is dead **and** has exactly 3 neighbors, then it comes to
+  life. Else if remains dead.
+
 ![example-patterns](https://media.giphy.com/media/4VVZTvTqzRR0BUwNIH/giphy.gif)
 
 [from Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns)
