@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
+import Home from "./components/Home";
+import NaviBar from "./components/NaviBar";
+import { Container, Row, Col } from "react-bootstrap";
 function App() {
+  const [colorPicker, setColorPicker] = useState("#e71d36");
+  const [animSpeed, setAnimSpeed] = useState(1000);
+  const [gridSize, setGridSize] = useState({
+    numberOfRow: 25,
+    numberOfCol: 25,
+  });
+  console.log(gridSize);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Container fluid>
+        <Row>
+          <Col lg={2} className="menucont ">
+            <NaviBar
+              setColorPicker={setColorPicker}
+              setAnimSpeed={setAnimSpeed}
+              setGridSize={setGridSize}
+            />
+          </Col>
+          <Col lg={10} className="colcont mt-5">
+            <Home
+              gridSize={gridSize}
+              colorPicker={colorPicker}
+              animSpeed={animSpeed}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 

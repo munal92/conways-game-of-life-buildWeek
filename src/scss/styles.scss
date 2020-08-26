@@ -1,0 +1,64 @@
+@import "./config";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+// .App {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   text-align: center;
+// }
+
+.colcont {
+  display: flex;
+  justify-content: center;
+  background-color: $white-color;
+}
+.menucont {
+  display: flex;
+  justify-content: center;
+  background-color: $dark-blue-color;
+  height: 100vh;
+  z-index: 2;
+}
+.contGen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  font-weight: bolder;
+  font-size: larger;
+}
+.spinnBtn {
+  min-width: 7vh !important;
+}
+.box {
+  border: 0.1px solid black;
+  // width: 3vh;
+  // height: 3vh;
+  // width: 30px;
+  // height: 30px;
+}
+.gridContainer {
+  // display: "grid";
+  // grid-template-columns: repeat(25, 20px);
+  display: flex;
+  flex-wrap: wrap;
+  // width: 75vh;
+  // height: 75vh;
+  // width: 750px;
+  // height: 750px;
+}
+
+@import "./navibar";

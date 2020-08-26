@@ -1,0 +1,21 @@
+.menuTitle {
+  font-family: $font-stack;
+
+  letter-spacing: 5px;
+  font-size: x-large;
+  color: $white-color;
+}
+
+.logoImg {
+  height: 15vh;
+  width: 15vh;
+}
+
+.navColCont {
+  button {
+    margin-top: 5vh;
+  }
+  .slider {
+    margin-top: 5vh;
+  }
+}
