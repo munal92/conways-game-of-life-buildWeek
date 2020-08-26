@@ -15,14 +15,14 @@ function App() {
     <>
       <Container fluid>
         <Row>
-          <Col lg={2} className="menucont ">
+          <Col lg={3} className="menucont ">
             <NaviBar
               setColorPicker={setColorPicker}
               setAnimSpeed={setAnimSpeed}
               setGridSize={setGridSize}
             />
           </Col>
-          <Col lg={10} className="colcont mt-5">
+          <Col lg={9} className="colcont mt-5">
             <Home
               gridSize={gridSize}
               colorPicker={colorPicker}
