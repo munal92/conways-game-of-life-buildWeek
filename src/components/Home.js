@@ -9,6 +9,8 @@ const Home = (props) => {
         colorPicker={props.colorPicker}
         animSpeed={props.animSpeed}
         preset={props.preset}
+        simRun={props.simRun}
+        setSimRun={props.setSimRun}
       />
     </div>
   );

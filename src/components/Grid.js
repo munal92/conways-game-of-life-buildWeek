@@ -51,7 +51,6 @@ const Grid = (props) => {
     }
   };
   const [grid, setGrid] = useState(resetGrid());
-  const [simRun, setSimRun] = useState(false);
 
   const [simGeneration, setSimGeneration] = useState(0);
   const [boxSize, setBoxSize] = useState({
@@ -66,7 +65,7 @@ const Grid = (props) => {
   });
 
   useEffect(() => {
-    if (simRun) {
+    if (props.simRun) {
       let timeout = setTimeout(() => {
         startSimHandler();
       }, props.animSpeed);
@@ -88,12 +87,12 @@ const Grid = (props) => {
   const startSimHandler = () => {
     let copiedArr = JSON.parse(JSON.stringify(grid));
 
-    if (simRun) {
+    if (props.simRun) {
       for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid.length; col++) {
           let neighbor = 0;
           if (
-            simRun &&
+            props.simRun &&
             row - 1 >= 0 &&
             row + 1 < numberOfRow &&
             col - 1 >= 0 &&
@@ -130,6 +129,8 @@ const Grid = (props) => {
             } else if (grid[row][col] === 1 && neighbor > 1 && neighbor < 4) {
               copiedArr[row][col] = 1;
             }
+          } else {
+            copiedArr[row][col] = 0;
           }
         }
       }
@@ -157,7 +158,7 @@ const Grid = (props) => {
               boxValue={grid[indexOfRow][indexOfCol]}
               boxIndexofRow={indexOfRow}
               boxIndexofCol={indexOfCol}
-              simRun={simRun}
+              simRun={props.simRun}
               colorPicker={props.colorPicker}
               boxSize={boxSize}
             />
@@ -170,13 +171,13 @@ const Grid = (props) => {
             <Button
               className="spinnBtn"
               onClick={() => {
-                setSimRun(true);
+                props.setSimRun(true);
 
                 startSimHandler();
               }}
               variant="success"
             >
-              {simRun ? (
+              {props.simRun ? (
                 <Spinner
                   as="span"
                   animation="border"
@@ -191,7 +192,7 @@ const Grid = (props) => {
           </Col>
           <Col lg={2}>
             <Button
-              onClick={() => (simRun ? setSimRun(false) : "")}
+              onClick={() => (props.simRun ? props.setSimRun(false) : "")}
               variant="danger"
             >
               Stop
@@ -202,7 +203,7 @@ const Grid = (props) => {
               onClick={() => {
                 setSimGeneration(0);
                 calculateBoxSize();
-                setSimRun(false);
+                props.setSimRun(false);
                 presetGrid();
                 //setGrid(resetGrid());
               }}

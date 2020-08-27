@@ -50,20 +50,38 @@ const NaviBar = (props) => {
           <div className="slider" style={{ color: "white" }}>
             {"Grid Size: " + sliderBarForGrid.y + " X " + sliderBarForGrid.y}
           </div>
-          <Slider
-            axis="x"
-            xstep={1}
-            xmin={5}
-            xmax={40}
-            x={sliderBarForGrid.y}
-            onChange={({ x }) => {
-              setsliderBarForGrid({ y: parseFloat(x.toFixed(2)) });
-              props.setGridSize({
-                numberOfRow: parseFloat(x.toFixed(2)),
-                numberOfCol: parseFloat(x.toFixed(2)),
-              });
-            }}
-          />
+          {props.simRun ? (
+            <Slider
+              disabled
+              axis="x"
+              xstep={1}
+              xmin={5}
+              xmax={40}
+              x={sliderBarForGrid.y}
+              onChange={({ x }) => {
+                setsliderBarForGrid({ y: parseFloat(x.toFixed(2)) });
+                props.setGridSize({
+                  numberOfRow: parseFloat(x.toFixed(2)),
+                  numberOfCol: parseFloat(x.toFixed(2)),
+                });
+              }}
+            />
+          ) : (
+            <Slider
+              axis="x"
+              xstep={1}
+              xmin={5}
+              xmax={40}
+              x={sliderBarForGrid.y}
+              onChange={({ x }) => {
+                setsliderBarForGrid({ y: parseFloat(x.toFixed(2)) });
+                props.setGridSize({
+                  numberOfRow: parseFloat(x.toFixed(2)),
+                  numberOfCol: parseFloat(x.toFixed(2)),
+                });
+              }}
+            />
+          )}
         </div>
 
         <div>
