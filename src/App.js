@@ -11,6 +11,7 @@ function App() {
     numberOfCol: 25,
   });
   const [preset, setPreset] = useState("Presets");
+  const [simRun, setSimRun] = useState(false);
   return (
     <>
       <Container fluid>
@@ -22,6 +23,8 @@ function App() {
               setGridSize={setGridSize}
               setPreset={setPreset}
               preset={preset}
+              simRun={simRun}
+              setSimRun={setSimRun}
             />
           </Col>
           <Col lg={9} className="colcont mt-5">
@@ -30,6 +33,8 @@ function App() {
               colorPicker={colorPicker}
               animSpeed={animSpeed}
               preset={preset}
+              simRun={simRun}
+              setSimRun={setSimRun}
             />
           </Col>
         </Row>
