@@ -7,6 +7,12 @@ const Grid = (props) => {
   let numberOfRow = props.gridSize.numberOfRow;
   let numberOfCol = props.gridSize.numberOfCol;
 
+  //   /* Extra small devices (phones, 600px and down) */
+  // @media only screen and (max-width: 600px) {...}
+
+  // /* Small devices (portrait tablets and large phones, 600px and up) */
+  // @media only screen and (min-width: 600px) {...}
+
   const resetGrid = () => {
     return Array(numberOfRow)
       .fill(0)
@@ -55,12 +61,28 @@ const Grid = (props) => {
   const [simGeneration, setSimGeneration] = useState(0);
   const [boxSize, setBoxSize] = useState({
     grid: {
-      width: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
-      height: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
+      width:
+        numberOfCol *
+          (numberOfCol > 26
+            ? props.boxDimension.width - 0.9
+            : props.boxDimension.width) +
+        "vh",
+      height:
+        numberOfCol *
+          (numberOfCol > 26
+            ? props.boxDimension.width - 0.9
+            : props.boxDimension.width) +
+        "vh",
     },
     box: {
-      width: numberOfCol > 26 ? "2vh" : "3vh",
-      height: numberOfCol > 26 ? "2vh" : "3vh",
+      width:
+        numberOfCol > 26
+          ? props.boxDimension.width - 0.9 + "vh"
+          : props.boxDimension.width + "vh",
+      height:
+        numberOfCol > 26
+          ? props.boxDimension.width - 0.9 + "vh"
+          : props.boxDimension.width + "vh",
     },
   });
 
@@ -75,15 +97,33 @@ const Grid = (props) => {
   function calculateBoxSize() {
     setBoxSize({
       grid: {
-        width: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
-        height: numberOfCol * (numberOfCol > 26 ? 2 : 3) + "vh",
+        width:
+          numberOfCol *
+            (numberOfCol > 26
+              ? props.boxDimension.width - 0.9
+              : props.boxDimension.width) +
+          "vh",
+        height:
+          numberOfCol *
+            (numberOfCol > 26
+              ? props.boxDimension.width - 0.9
+              : props.boxDimension.width) +
+          "vh",
       },
       box: {
-        width: numberOfCol > 26 ? "2vh" : "3vh",
-        height: numberOfCol > 26 ? "2vh" : "3vh",
+        width:
+          numberOfCol > 26
+            ? props.boxDimension.width - 0.9 + "vh"
+            : props.boxDimension.width + "vh",
+        height:
+          numberOfCol > 26
+            ? props.boxDimension.width - 0.9 + "vh"
+            : props.boxDimension.width + "vh",
       },
     });
   }
+
+  console.log(boxSize);
   const startSimHandler = () => {
     let copiedArr = JSON.parse(JSON.stringify(grid));
 
@@ -145,6 +185,11 @@ const Grid = (props) => {
 
   return (
     <>
+      {props.boxDimension.width < 2 ? (
+        <Col className="contGen mb-3" lg={6} xs={12}>
+          Generation: {simGeneration}
+        </Col>
+      ) : undefined}
       <div
         style={{ width: boxSize.grid.width, height: boxSize.grid.height }}
         className="gridContainer"
@@ -165,11 +210,11 @@ const Grid = (props) => {
           ))
         )}
       </div>
-      <div className="d-flex justify-content-start mt-4">
+      <div className="d-flex justify-content-start">
         <Row>
-          <Col lg={2}>
+          <Col lg={2} xs={3}>
             <Button
-              className="spinnBtn"
+              className="spinnBtn mt-3"
               onClick={() => {
                 props.setSimRun(true);
 
@@ -190,16 +235,18 @@ const Grid = (props) => {
               )}
             </Button>
           </Col>
-          <Col lg={2}>
+          <Col lg={2} xs={3}>
             <Button
+              className="mt-3"
               onClick={() => (props.simRun ? props.setSimRun(false) : "")}
               variant="danger"
             >
               Stop
             </Button>
           </Col>
-          <Col lg={2}>
+          <Col lg={2} xs={12}>
             <Button
+              className="mt-3 mb-5"
               onClick={() => {
                 setSimGeneration(0);
                 calculateBoxSize();
@@ -212,9 +259,11 @@ const Grid = (props) => {
               Reset/Create
             </Button>
           </Col>
-          <Col className="contGen pl-5" lg={6}>
-            Generation: {simGeneration}
-          </Col>
+          {props.boxDimension.width > 1.9 ? (
+            <Col className="contGen pl-5 mt-md-3" lg={6} xs={5}>
+              Generation: {simGeneration}
+            </Col>
+          ) : undefined}
         </Row>
       </div>
     </>

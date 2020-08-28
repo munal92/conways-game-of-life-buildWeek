@@ -11,6 +11,7 @@ const Home = (props) => {
         preset={props.preset}
         simRun={props.simRun}
         setSimRun={props.setSimRun}
+        boxDimension={props.boxDimension}
       />
     </div>
   );

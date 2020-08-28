@@ -12,6 +12,24 @@ function App() {
   });
   const [preset, setPreset] = useState("Presets");
   const [simRun, setSimRun] = useState(false);
+  const [boxDimension, setBoxDimension] = useState({
+    width: window.screen.width < 670 ? 1.6 : 3,
+  });
+
+  function calculateWidth() {
+    console.log(window.screen.width, " / ", boxDimension.width);
+    if (window.screen.width < 670) {
+      console.log(
+        window.screen.width,
+        " / ",
+        boxDimension.width,
+        " / telefon 600 alti"
+      );
+      setBoxDimension({ width: 1.2 });
+    } else {
+      setBoxDimension({ width: 3 });
+    }
+  }
   return (
     <>
       <Container fluid>
@@ -35,6 +53,7 @@ function App() {
               preset={preset}
               simRun={simRun}
               setSimRun={setSimRun}
+              boxDimension={boxDimension}
             />
           </Col>
         </Row>
