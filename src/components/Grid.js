@@ -7,12 +7,6 @@ const Grid = (props) => {
   let numberOfRow = props.gridSize.numberOfRow;
   let numberOfCol = props.gridSize.numberOfCol;
 
-  //   /* Extra small devices (phones, 600px and down) */
-  // @media only screen and (max-width: 600px) {...}
-
-  // /* Small devices (portrait tablets and large phones, 600px and up) */
-  // @media only screen and (min-width: 600px) {...}
-
   const resetGrid = () => {
     return Array(numberOfRow)
       .fill(0)
@@ -123,7 +117,6 @@ const Grid = (props) => {
     });
   }
 
-  console.log(boxSize);
   const startSimHandler = () => {
     let copiedArr = JSON.parse(JSON.stringify(grid));
 

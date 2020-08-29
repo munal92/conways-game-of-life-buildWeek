@@ -16,20 +16,6 @@ function App() {
     width: window.screen.width < 670 ? 1.6 : 3,
   });
 
-  function calculateWidth() {
-    console.log(window.screen.width, " / ", boxDimension.width);
-    if (window.screen.width < 670) {
-      console.log(
-        window.screen.width,
-        " / ",
-        boxDimension.width,
-        " / telefon 600 alti"
-      );
-      setBoxDimension({ width: 1.2 });
-    } else {
-      setBoxDimension({ width: 3 });
-    }
-  }
   return (
     <>
       <Container fluid>
