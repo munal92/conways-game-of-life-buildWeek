@@ -12,6 +12,10 @@ function App() {
   });
   const [preset, setPreset] = useState("Presets");
   const [simRun, setSimRun] = useState(false);
+  const [boxDimension, setBoxDimension] = useState({
+    width: window.screen.width < 670 ? 1.6 : 3,
+  });
+
   return (
     <>
       <Container fluid>
@@ -35,6 +39,7 @@ function App() {
               preset={preset}
               simRun={simRun}
               setSimRun={setSimRun}
+              boxDimension={boxDimension}
             />
           </Col>
         </Row>
