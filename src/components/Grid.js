@@ -253,7 +253,7 @@ const Grid = (props) => {
             </Button>
           </Col>
           {props.boxDimension.width > 1.9 ? (
-            <Col className="contGen pl-5 mt-md-3" lg={6} xs={5}>
+            <Col className="contGen pl-5 mt-3" lg={6} xs={5}>
               Generation: {simGeneration}
             </Col>
           ) : undefined}
