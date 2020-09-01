@@ -39,8 +39,9 @@ body {
 .contGen {
   display: flex;
   justify-content: flex-end;
-  font-weight: bolder;
-  font-size: larger;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: $font-Eco;
 }
 .spinnBtn {
   min-width: 7vh !important;
