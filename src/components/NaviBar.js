@@ -22,18 +22,17 @@ const NaviBar = (props) => {
   return (
     <Container>
       <Col className="navColCont">
-        <div>
+        <div className="menuTitle mt-5 mb-1">
           <img
             alt=""
             src={Logo}
             className="logoImg d-inline-block align-top mt-3"
-          />
+          />{" "}
+          Conway's Game Of Life
         </div>
-
-        <div className="menuTitle">Conway's Game Of Life</div>
-
+        <div></div>
         <div>
-          <div className="slider" style={{ color: "white" }}>
+          <div className="slider " style={{ color: "white" }}>
             {"Sim. Speed: " + sliderBar.x + " ms"}
           </div>
           <Slider
